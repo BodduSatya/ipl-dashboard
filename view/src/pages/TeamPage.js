@@ -1,5 +1,5 @@
 import { React, useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
+import { useParams,Link } from 'react-router-dom';
 import { MatchDetailCard } from '../components/MatchDetailCard';
 import { MatchSmallCard } from '../components/MatchSmallCard';
 import './TeamPage.scss';
@@ -9,16 +9,16 @@ export const TeamPage = () => {
 
   const [team, setTeam] = useState({ matches: [] });
   const { teamName } = useParams();
-  console.log(teamName);
+  //console.log(teamName);
   useEffect(
     () => {
-      const fetchMathes = async () => {
+      const fetchTeams = async () => {
         const response = await fetch(`http://localhost:8080/team/${teamName}`)
         const data = await response.json();
         setTeam(data);
         //console.log(data);
       }
-      fetchMathes();
+      fetchTeams();
     }, [teamName]
   );
 
@@ -46,7 +46,9 @@ export const TeamPage = () => {
       </div>
       {team.matches.slice(1).map(match => <MatchSmallCard teamName={team.teamName} match={match} ></MatchSmallCard>)}
       <div className="more-link">
-        <a href="#"> More > </a>
+        <Link to={`/teams/${teamName}/matches/${process.env.REACT_APP_DATA_END_YEAR}`} >
+            More >>  
+        </Link>
       </div>
     </div>
   );
