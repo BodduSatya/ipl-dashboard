@@ -1,7 +1,4 @@
 import { React, useEffect, useState } from 'react';
-import { useParams, Link } from 'react-router-dom';
-import { MatchDetailCard } from '../components/MatchDetailCard';
-import { MatchSmallCard } from '../components/MatchSmallCard';
 import './HomePage.scss';
 
 import { TeamTile } from '../components/TeamTile';
@@ -29,7 +26,7 @@ export const HomePage = () => {
                 <h1 className="app-name">IPL Dashboard</h1>
             </div>
             <div className="team-grid">
-                {teams.map(team => <TeamTile teamName={team.teamName} />)}
+                {teams.map((team,index) => <TeamTile key={index} teamName={team.teamName} />)}
             </div>
         </div>
     );

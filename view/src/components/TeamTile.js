@@ -6,7 +6,7 @@ export const TeamTile = ({teamName}) => {
     return (
         <div className="TeamTile">
             <h1>
-              <Link to={'/teams/${teamName}'} >  {teamName} </Link>
+              <Link to={`/teams/${teamName}`} >  {teamName} </Link>
              </h1>
         </div>
     )
